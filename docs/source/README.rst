@@ -5,7 +5,7 @@ Integration of
 
 - Plone (https://www.plone.org)
 - XML Director (https://www.xml-director.info) 
-- Dropbox
+- Bookalope (https://bookalope.net)
 
 Requirements
 ------------

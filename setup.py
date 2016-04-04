@@ -1,11 +1,11 @@
 import os
 from setuptools import setup, find_packages
 
-version = '0.1.0'
+version = '0.1.1'
 
 setup(name='xmldirector.bookalope',
       version=version,
-      description="Plone/XML-Director integration with c-rex.net",
+      description="Plone/XML-Director integration with bookalope.net",
       long_description=open(os.path.join("docs", "source", "README.rst")).read() + "\n" +
       open(os.path.join("docs", "source", "HISTORY.rst")).read(),
       # Get more strings from
@@ -18,7 +18,7 @@ setup(name='xmldirector.bookalope',
           "Framework :: Zope2",
           "Topic :: Software Development :: Libraries :: Python Modules",
       ],
-      keywords='xml-director bookalope XML Plone Python ',
+      keywords='xml-director bookalope XML Plone Python ebooks ',
       author='Andreas Jung',
       author_email='info@zopyx.com',
       url='http://pypi.python.org/pypi/xmldirector.bookalope',
@@ -29,7 +29,6 @@ setup(name='xmldirector.bookalope',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'fs',
       ],
       tests_require=['zope.testing'],
       entry_points="""
