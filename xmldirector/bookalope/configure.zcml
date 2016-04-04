@@ -16,9 +16,9 @@
 
     <genericsetup:registerProfile
         name="default"
-        title="xmldirector.dropbox"
+        title="xmldirector.bookalope"
         directory="profiles/default"
-        description="XML Director integration with Dropbox"
+        description="XML Director integration with Bookalope"
         provides="Products.GenericSetup.interfaces.EXTENSION"
     />
 

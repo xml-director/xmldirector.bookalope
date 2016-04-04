@@ -2,16 +2,16 @@
 <object
     name="portal_controlpanel"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="xmldirector.dropbox"
+    i18n:domain="xmldirector.bookalope"
     purge="False">
 
     <configlet
-        title="XML-Director Dropbox Settings"
-        action_id="xmldirector.dropbox"
-        appId="xmldirector.dropbox"
+        title="XML-Director Bookalope Settings"
+        action_id="xmldirector.bookalope"
+        appId="xmldirector.bookalope"
         category="Products"
         condition_expr=""
-        url_expr="string:${portal_url}/@@xmldirector-dropbox-settings"
+        url_expr="string:${portal_url}/@@xmldirector-bookalope-settings"
         visible="True"
         i18n:attributes="title">
             <permission>Manage portal</permission>

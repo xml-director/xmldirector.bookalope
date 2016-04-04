@@ -2,28 +2,28 @@
 
 
 ################################################################
-# xmldirector.dropbox
+# xmldirector.Bookalope
 # (C) 2016,  Andreas Jung, www.zopyx.com, Tuebingen, Germany
 ################################################################
 
 from plone.app.registry.browser import controlpanel
 
-from xmldirector.dropbox.interfaces import IDropboxSettings
-from xmldirector.dropbox.i18n import MessageFactory as _
+from xmldirector.Bookalope.interfaces import IBookalopeSettings
+from xmldirector.Bookalope.i18n import MessageFactory as _
 
 
-class DropboxSettingsEditForm(controlpanel.RegistryEditForm):
+class BookalopeSettingsEditForm(controlpanel.RegistryEditForm):
 
-    schema = IDropboxSettings
-    label = _(u'Dropbox Policy settings')
+    schema = IBookalopeSettings
+    label = _(u'Bookalope Policy settings')
     description = _(u'')
 
     def updateFields(self):
-        super(DropboxSettingsEditForm, self).updateFields()
+        super(BookalopeSettingsEditForm, self).updateFields()
 
     def updateWidgets(self):
-        super(DropboxSettingsEditForm, self).updateWidgets()
+        super(BookalopeSettingsEditForm, self).updateWidgets()
 
 
-class DropboxSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
-    form = DropboxSettingsEditForm
+class BookalopeSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
+    form = BookalopeSettingsEditForm

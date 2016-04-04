@@ -9,34 +9,10 @@
     >
 
     <browser:page
-        name="xmldirector-dropbox-settings"
+        name="xmldirector-bookalope-settings"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.DropboxSettingsControlPanel"
         permission="cmf.ManagePortal"
     />
-
-    <browser:page
-        name="authorize-dropbox"
-        for="xmldirector.plonecore.connector.IConnector"
-        permission="cmf.ModifyPortalContent"
-        class=".dropbox_authentication.DropboxAuthentication"
-        template="dropbox_authentication.pt"
-        />
-
-    <browser:page
-        name="deauthorize-dropbox"
-        for="xmldirector.plonecore.connector.IConnector"
-        permission="cmf.ModifyPortalContent"
-        class=".dropbox_authentication.DropboxAuthentication"
-        attribute="deauthorize"
-        />                                              i
-
-    <browser:page
-        name="authorize-dropbox-action"
-        for="xmldirector.plonecore.connector.IConnector"
-        permission="cmf.ModifyPortalContent"
-        class=".dropbox_authentication.DropboxAuthentication"
-        attribute="authorize"
-        />                                              i
 
 </configure>

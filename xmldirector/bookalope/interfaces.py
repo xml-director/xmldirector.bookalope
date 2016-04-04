@@ -15,15 +15,15 @@ class IBrowserLayer(Interface):
     """A brower layer specific to my product """
 
 
-class IDropboxSettings(Interface):
-    """ Dropbox settings """
+class IBookalopeSettings(Interface):
+    """ Bookalope settings """
 
-    bookalope_app_key = schema.TextLine(
-        title=_(u'Dropbox application key'),
+    bookalope_api_key = schema.TextLine(
+        title=_(u'Bookalope API key'),
         required=True
     )
 
-    bookalope_app_secret = schema.TextLine(
-        title=_(u'Dropbox application secret'),
-        required=True
+    bookalope_beta = schema.TextLine(
+        title=_(u'Use Bookalope beta service'),
+        default=False
     )
