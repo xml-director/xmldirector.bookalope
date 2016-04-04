@@ -1,4 +1,4 @@
 <layers>
-    <layer name="xmldirector.dropbox"
-        interface="xmldirector.dropbox.interfaces.IBrowserLayer" />
+    <layer name="xmldirector.bookalope"
+        interface="xmldirector.bookalope.interfaces.IBrowserLayer" />
 </layers>
