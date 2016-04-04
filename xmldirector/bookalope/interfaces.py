@@ -23,7 +23,7 @@ class IBookalopeSettings(Interface):
         required=True
     )
 
-    bookalope_beta = schema.TextLine(
+    bookalope_beta = schema.Bool(
         title=_(u'Use Bookalope beta service'),
         default=False
     )

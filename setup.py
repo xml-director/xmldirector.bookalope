@@ -30,7 +30,6 @@ setup(name='xmldirector.bookalope',
       install_requires=[
           'setuptools',
           'fs',
-          'bookalope'
       ],
       tests_require=['zope.testing'],
       entry_points="""

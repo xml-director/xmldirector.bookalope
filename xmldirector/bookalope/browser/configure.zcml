@@ -11,7 +11,7 @@
     <browser:page
         name="xmldirector-bookalope-settings"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".controlpanel.DropboxSettingsControlPanel"
+        class=".controlpanel.BookalopeSettingsControlPanel"
         permission="cmf.ManagePortal"
     />
 

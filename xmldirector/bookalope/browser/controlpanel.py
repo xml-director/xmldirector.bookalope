@@ -8,8 +8,8 @@
 
 from plone.app.registry.browser import controlpanel
 
-from xmldirector.Bookalope.interfaces import IBookalopeSettings
-from xmldirector.Bookalope.i18n import MessageFactory as _
+from xmldirector.bookalope.interfaces import IBookalopeSettings
+from xmldirector.bookalope.i18n import MessageFactory as _
 
 
 class BookalopeSettingsEditForm(controlpanel.RegistryEditForm):
