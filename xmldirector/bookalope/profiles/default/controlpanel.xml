@@ -6,7 +6,7 @@
     purge="False">
 
     <configlet
-        title="XML-Director Bookalope Settings"
+        title="XML-Director Bookalope"
         action_id="xmldirector.bookalope"
         appId="xmldirector.bookalope"
         category="Products"
