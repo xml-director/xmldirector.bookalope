@@ -12,7 +12,7 @@ import bookalope
 from xmldirector.bookalope.interfaces import IBookalopeSettings
 
 
-def convert_bookalope(context, source, cover=None, formats=[], title=u'', author=u'', prefix=None):
+def convert_bookalope(context, source, cover=None, formats=[], title=u'', author=u'', prefix=None, storage_prefix='result'):
     """ Convert ``source`` using bookalope.net """
 
     registry = getUtility(IRegistry)
@@ -44,8 +44,8 @@ def convert_bookalope(context, source, cover=None, formats=[], title=u'', author
         with handle.open(cover, 'rb') as doc:
             bookflow.set_cover_image('cover.jpg', doc.read())
 
-    if not handle.exists('result'):
-        handle.makedir('result')
+    if not handle.exists(storage_prefix):
+        handle.makedir(storage_prefix, recursive=True)
 
     for format_ in formats:
         # Get the Style instance for the default styling.
@@ -53,7 +53,7 @@ def convert_bookalope(context, source, cover=None, formats=[], title=u'', author
         default_style = next(_ for _ in styles if _.short_name == "default")
         converted_bytes = bookflow.convert(format_, default_style, version="test")
 
-        fname = "result/{}.{}".format(prefix or bookflow.id, format_)
+        fname = "{}/{}.{}".format(storage_prefix, prefix or bookflow.id, format_)
         with handle.open(fname, "wb") as doc_conv:
             doc_conv.write(converted_bytes)
 

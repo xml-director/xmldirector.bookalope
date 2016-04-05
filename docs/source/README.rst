@@ -7,6 +7,9 @@ Integration of
 - XML Director (https://www.xml-director.info) 
 - Bookalope (https://bookalope.net)
 
+This Plone 4/5 add-on allows to generate Ebook formats (EPUB, EPUB3, Mobi) and
+other formats (ICML, PDF, DOCX) from content stored in XML Director.
+
 Requirements
 ------------
 
