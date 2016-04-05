@@ -23,6 +23,8 @@ class api_convert_bookalope(BaseService):
 
         IPersistentLogger(self.context).log('bookalope-convert')
         payload = decode_json_payload(self.request)
+        if not payload.get('source'):
+            raise ValueError('No source file specified')
 
         print payload
         convert_bookalope(self.context, **payload)

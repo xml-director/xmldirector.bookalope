@@ -32,6 +32,9 @@ def convert_bookalope(context, source, cover=None, formats=[], title=u'', author
     bookflow.author = author
     bookflow.save()
 
+    if not formats:
+        raise ValueError('You must specify a list of ebook formats')
+
     available_formats = [fext for format_ in b_client.get_export_formats() for fext in format_.file_exts]
     for format_ in formats:
         if not format_ in available_formats:
