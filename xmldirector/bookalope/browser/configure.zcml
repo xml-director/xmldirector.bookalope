@@ -15,4 +15,12 @@
         permission="cmf.ManagePortal"
     />
 
+    <plone:service
+      method="POST"
+        permission="cmf.ModifyPortalContent"
+        for="xmldirector.plonecore.connector.IConnector"
+        factory=".restapi.api_convert_bookalope"
+        name="xmldirector-convert-bookalope"
+    />
+
 </configure>
