@@ -1,5 +1,5 @@
-xmldirector.dropbox
-===================
+xmldirector.bookalope
+=====================
 
 Integration of 
 
@@ -16,6 +16,29 @@ Requirements
 
 - XML Director (xmldirector.plonecore)
 
+Configuration
+-------------
+
+Install ``xmldirector.bookalope`` through the Plone add-on installer
+and configure your Bookalope API key and choose if you are running against
+Bookalope's production or beta environment.
+
+API
+---
+
+There is only one publiv API method in order to interact with Bookalope
+from XML Director code (see ``xmldirector/bookalope/browser/api.py``)::
+
+  convert_bookalope(context, source, cover=None, formats=[], title=u'', author=u'', prefix=None)
+
+- ``context`` - a XML Director ``Connector`` instance
+- ``source`` - source path of the DOCX file inside the directory configured for the given 
+  Connector ``context`` e.g. ``src/index.docx``
+- ``cover`` - source path of cover page image
+- ``formats`` - a list of formats to be generated (supported: epub, epub3, docx, pdf, icml, mobi)
+- ``title`` - title used for the ebook
+- ``author`` - author name of the publication
+- ``prefix`` - generated files will be stored under ``result/<prefix>.<format>``
 
 License
 -------
