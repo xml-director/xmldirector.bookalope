@@ -32,7 +32,7 @@ API
 There is only one public API method in order to interact with Bookalope
 from XML Director code (see ``xmldirector/bookalope/browser/api.py``)::
 
-  convert_bookalope(context, source, cover=None, formats=[], title=u'', author=u'', prefix=None)
+  convert_bookalope(context, source, cover=None, formats=[], title=u'', author=u'', prefix=None, storage_path='result')
 
 - ``context`` - a XML Director ``Connector`` instance
 - ``source`` - source path of the DOCX file inside the directory configured for the given 
@@ -42,6 +42,7 @@ from XML Director code (see ``xmldirector/bookalope/browser/api.py``)::
 - ``title`` - title used for the ebook
 - ``author`` - author name of the publication
 - ``prefix`` - generated files will be stored under ``result/<prefix>.<format>``
+- ``storage_path`` - subpath used to store the generated ebook files
 
 License
 -------
