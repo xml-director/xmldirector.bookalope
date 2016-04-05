@@ -10,7 +10,7 @@ import bookalope
 from xmldirector.bookalope.interfaces import IBookalopeSettings
 
 
-def convert_bookalope(context, source, formats=[], title=u'', author=u'', prefix=None):
+def convert_bookalope(context, source, cover=None, formats=[], title=u'', author=u'', prefix=None):
     """ Convert ``source`` using bookalope.net """
 
     registry = getUtility(IRegistry)
@@ -29,6 +29,10 @@ def convert_bookalope(context, source, formats=[], title=u'', author=u'', prefix
     handle = context.get_handle()
     with handle.open(source, 'rb') as doc:
         bookflow.set_document('index.docx', doc.read())
+
+    if cover:
+        with handle.open(cover, 'rb') as doc:
+            bookflow.set_cover_image('cover.jpg', doc.read())
 
     if not handle.exists('result'):
         handle.makedir('result')
