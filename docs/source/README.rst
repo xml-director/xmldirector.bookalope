@@ -26,7 +26,7 @@ Bookalope's production or beta environment.
 API
 ---
 
-There is only one publiv API method in order to interact with Bookalope
+There is only one public API method in order to interact with Bookalope
 from XML Director code (see ``xmldirector/bookalope/browser/api.py``)::
 
   convert_bookalope(context, source, cover=None, formats=[], title=u'', author=u'', prefix=None)
