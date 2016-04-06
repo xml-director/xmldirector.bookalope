@@ -83,6 +83,24 @@ class Bookalope(BrowserView):
         self.context.plone_utils.addPortalMessage(u'Generated files removed')
         self.request.response.redirect(self.context.absolute_url() + '/@@xmldirector-bookalope')
 
+    def cleanup_source_files(self):
+        handle = self.context.get_handle()
+        if handle.exists('src'):
+            for name in handle.listdir('src'):
+                if name.endswith(('.docx', '.icml')):
+                    handle.remove('src/{}'.format(name))
+        self.context.plone_utils.addPortalMessage(u'Source files removed')
+        self.request.response.redirect(self.context.absolute_url() + '/@@xmldirector-bookalope')
+
+    def cleanup_cover_files(self):
+        handle = self.context.get_handle()
+        if handle.exists('src'):
+            for name in handle.listdir('src'):
+                if name.endswith(('.jpg', '.png', '.gif')):
+                    handle.remove('src/{}'.format(name))
+        self.context.plone_utils.addPortalMessage(u'Cover files removed')
+        self.request.response.redirect(self.context.absolute_url() + '/@@xmldirector-bookalope')
+
     def convert(self):
 
         convert_bookalope(
