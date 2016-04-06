@@ -13,7 +13,6 @@ from xmldirector.bookalope.browser.api import convert_bookalope
 
 class Bookalope(BrowserView):
 
-
     def upload_source(self):
 
         source = self.request.get('source')
@@ -102,6 +101,12 @@ class Bookalope(BrowserView):
         self.request.response.redirect(self.context.absolute_url() + '/@@xmldirector-bookalope')
 
     def convert(self):
+
+        if not 'source' in self.request.form:
+            raise ValueError(u'No source file selected')
+
+        if not 'formats' in self.request.form:
+            raise ValueError(u'No formats selected')
 
         convert_bookalope(
                 context=self.context,
