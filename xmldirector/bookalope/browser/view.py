@@ -62,13 +62,19 @@ class Bookalope(BrowserView):
         handle = self.context.get_handle()
         if not handle.exists('src'):
             return ()
-        return [ 'src/{}'.format(name) for name in handle.listdir('src') if name.endswith(('.png', '.jpg', '.gif'))]
+        return ['src/{}'.format(name) for name in handle.listdir('src') if name.endswith(('.png', '.jpg', '.gif'))]
 
     def get_source_files(self):
         handle = self.context.get_handle()
         if not handle.exists('src'):
             return ()
-        return [ 'src/{}'.format(name) for name in handle.listdir('src') if name.endswith(('.icml', '.docx'))]
+        return ['src/{}'.format(name) for name in handle.listdir('src') if name.endswith(('.icml', '.docx'))]
+
+    def get_generated_files(self):
+        handle = self.context.get_handle()
+        if not handle.exists('result'):
+            return ()
+        return ['result/{}'.format(name) for name in handle.listdir('result')]
 
     def convert(self):
 
