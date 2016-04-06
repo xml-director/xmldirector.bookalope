@@ -76,6 +76,13 @@ class Bookalope(BrowserView):
             return ()
         return ['result/{}'.format(name) for name in handle.listdir('result')]
 
+    def cleanup_generated_files(self):
+        handle = self.context.get_handle()
+        if handle.exists('result'):
+            handle.removedir('result', force=True, recursive=True)
+        self.context.plone_utils.addPortalMessage(u'Generated files removed')
+        self.request.response.redirect(self.context.absolute_url() + '/@@xmldirector-bookalope')
+
     def convert(self):
 
         convert_bookalope(

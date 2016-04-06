@@ -38,6 +38,15 @@
         attribute="upload_cover"
         permission="cmf.ModifyPortalContent"
     />
+
+    <browser:page
+        name="bookalope-cleanup"
+        for="xmldirector.plonecore.connector.IConnector"
+        class=".view.Bookalope"
+        attribute="cleanup_generated_files"
+        permission="cmf.ModifyPortalContent"
+    />
+    
     
     <browser:page
         name="bookalope-convert"
