@@ -15,6 +15,14 @@
         permission="cmf.ManagePortal"
     />
 
+    <browser:page
+        name="xmldirector-bookalope"
+        for="xmldirector.plonecore.connector.IConnector"
+        class=".view.Bookalope"
+        template="bookalope.pt"
+        permission="cmf.ModifyPortalContent"
+    />
+
     <plone:service
       method="POST"
         permission="cmf.ModifyPortalContent"
