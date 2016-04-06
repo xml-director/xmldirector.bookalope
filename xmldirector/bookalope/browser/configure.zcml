@@ -23,6 +23,22 @@
         permission="cmf.ModifyPortalContent"
     />
 
+    <browser:page
+        name="bookalope-upload-source"
+        for="xmldirector.plonecore.connector.IConnector"
+        class=".view.Bookalope"
+        attribute="upload_source"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
+        name="bookalope-upload-cover"
+        for="xmldirector.plonecore.connector.IConnector"
+        class=".view.Bookalope"
+        attribute="upload_cover"
+        permission="cmf.ModifyPortalContent"
+    />
+
     <plone:service
       method="POST"
         permission="cmf.ModifyPortalContent"
