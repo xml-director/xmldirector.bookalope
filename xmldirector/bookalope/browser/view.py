@@ -8,6 +8,8 @@
 import os
 from Products.Five.browser import BrowserView
 
+from xmldirector.bookalope.browser.api import convert_bookalope
+
 
 class Bookalope(BrowserView):
 
@@ -68,4 +70,17 @@ class Bookalope(BrowserView):
             return ()
         return [ 'src/{}'.format(name) for name in handle.listdir('src') if name.endswith(('.icml', '.docx'))]
 
+    def convert(self):
+
+        convert_bookalope(
+                context=self.context,
+                source=self.request['source'],
+                cover=self.request.get('cover'),
+                title=self.request.get('title', ''),
+                author=self.request.get('author', ''),
+                formats=self.request.get('formats', ())
+                )
+
+        self.context.plone_utils.addPortalMessage(u'Conversion completed')
+        self.request.response.redirect(self.context.absolute_url() + '/@@xmldirector-bookalope')
 
