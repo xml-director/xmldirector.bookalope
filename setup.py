@@ -29,6 +29,7 @@ setup(name='xmldirector.bookalope',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'babel',
       ],
       tests_require=['zope.testing'],
       entry_points="""
