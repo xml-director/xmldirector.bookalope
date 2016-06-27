@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.3.2 (2016/06/27)
+------------------
+- updated to latest Bookalope API changes
+
 0.3.1 (2016/04/06)
 ------------------
 - cleanup and minor improvements
