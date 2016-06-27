@@ -20,8 +20,7 @@ def _is_token(token_s):
 
     :returns bool: True if the string is a valid Bookalope token, False otherwise.
     """
-    return True
-    return re.fullmatch(r"^[0-9a-f]{32}$", token_s or "") is not None
+    return re.match(r"^[0-9a-f]{32}$", token_s or "") is not None
 
 
 class TokenError(Exception):
@@ -31,7 +30,7 @@ class TokenError(Exception):
     """
     def __init__(self, token=""):
         message = "Invalid Bookalope token: " + (token or "<not set>")
-        super().__init__(message)
+        super(TokenError, self).__init__(message)
 
 
 class BookalopeClient(object):
@@ -52,7 +51,7 @@ class BookalopeClient(object):
         """
         self.__token = None
         if token is not None:
-            self.token = token
+            self.__token = token
         if beta_host:
             self.__host = "https://beta.bookalope.net"
         else:
@@ -88,7 +87,7 @@ class BookalopeClient(object):
                  OK (200) or if the response contained unexpected header/body
                  data.
         """
-        response = requests.get(self.__host + url, params=params, auth=(self.token, ""))
+        response = requests.get(self.__host + url, params=params, auth=(self.__token, ""))
         if response.status_code == requests.codes.ok:
             if response.headers["Content-Type"] == "application/json; charset=UTF-8":
                 return response.json()
@@ -112,7 +111,7 @@ class BookalopeClient(object):
         :raises: An HTTP exception if the server responded with anything but
                  OK (200) or CREATED (201).
         """
-        response = requests.post(self.__host + url, json=params, auth=(self.token, ""))
+        response = requests.post(self.__host + url, json=params, auth=(self.__token, ""))
         if response.status_code in [requests.codes.ok, requests.codes.created]:
             if int(response.headers["Content-Length"]):
                 # TODO: Check that Content-Type is JSON?
@@ -133,7 +132,7 @@ class BookalopeClient(object):
         :raises: An HTTP exception if the server responded with anything but
                  NO CONTENT (204).
         """
-        response = requests.delete(self.__host + url, auth=(self.token, ""))
+        response = requests.delete(self.__host + url, auth=(self.__token, ""))
         if response.status_code == requests.codes.no_content:
             return None
         response.raise_for_status()
@@ -618,7 +617,7 @@ class Bookflow(object):
         elif isinstance(id_or_packed, str):
             if not _is_token(id_or_packed):
                 raise TokenError(id_or_packed)
-            url = "/api/books/{}/bookflows/{}".format(book.id, id_or_packed)
+            url = "/api/bookflows/{}".format(id_or_packed)
             bookflow = self.__bookalope.http_get(url)["bookflow"]
         elif isinstance(id_or_packed, dict):
             bookflow = id_or_packed
@@ -628,7 +627,7 @@ class Bookflow(object):
         self.__name = bookflow["name"]
         self.__step = bookflow["step"]
         self.__book = book
-        self.__url = "/api/books/{}/bookflows/{}".format(self.__book.id, self.__id)
+        self.__url = "/api/bookflows/{}".format(self.__id)
         # Metadata that can be modified.
         # TODO: Consider update() here to pull in server data.
         self.__title = None
@@ -670,7 +669,7 @@ class Bookflow(object):
         params = {
             "name": self.__name,
             }
-        params.update({ k:v for k,v in self.metadata().items() if v is not None })
+        params.update({k:v for k, v in self.metadata().items() if v is not None})
         return self.__bookalope.http_post(self.url, params)
 
     def delete(self):
@@ -832,7 +831,7 @@ class Bookflow(object):
 
     def get_cover_image(self):
         """Download the cover image as a byte array from the Bookalope server."""
-        return self.get_image("cover")
+        return self.get_image("cover-image")
 
     def get_image(self, name):
         """
