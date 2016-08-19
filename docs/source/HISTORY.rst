@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.5.0 (2018/08/18)
+------------------
+- improved compatibility with Plone 5.0
+- improved error handling 
+
 0.3.2 (2016/06/27)
 ------------------
 - updated to latest Bookalope API changes
